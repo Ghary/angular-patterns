@@ -7,6 +7,7 @@ module.exports = function() {
     var server = './mock-server/';
     var test   = './test/';
     var report = './report/';
+    var gulpDir = './gulp/';
     var root = './';
     var sassCache = './.sass-cache/';
     var specRunnerFile = 'specs.html';
@@ -39,6 +40,7 @@ module.exports = function() {
         sass: client + '**/*.scss',
         sassRoot: client + 'app.scss',
         report: report,
+        gulpDir: gulpDir,
         root: root,
         sassCache: sassCache,
         server: server,
