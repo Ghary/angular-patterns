@@ -2,8 +2,8 @@
 
 'use strict';
 
+var fs = require('fs');
 var config = require('./gulp.config')();
-var wrench = require('wrench');
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')({
     lazy: true
@@ -39,13 +39,23 @@ function log(msg) {
 /**
  * Import all gulp task files from the gulp directory
  */
-wrench.readdirSyncRecursive(config.gulpDir)
-    .filter(function(file) {
-        return (/\.(js|coffee)$/i).test(file);
-    })
-    .map(function(file) {
-        require(config.gulpDir + file)(log);
-    });
+var gulpDirContents = fs.readdirSync(config.gulpDir);
+gulpDirContents.forEach(function(file) {
+    var path = config.gulpDir + file;
+
+    // Test if the file is not JavaScript or CoffeeScript
+    if (!(/\.(js|coffee)$/i).test(file)) {
+        return;
+    }
+
+    // Test if the file is a directory
+    if (fs.lstatSync(path).isDirectory()) {
+        return;
+    }
+
+    // Include the file
+    require(path)(log);
+});
 
 /**
  * List the available gulp tasks
