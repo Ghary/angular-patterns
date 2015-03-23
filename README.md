@@ -57,12 +57,10 @@ The folder structure is somewhat simplified and flatter compared to John Papa's 
 
 ```
 /src
+    /components
     /core
-    /dashboard
     /framework
     /images
-    /profile
-    /app.controller.js
     /app.module.js
     /app.scss
     /index.html
@@ -73,17 +71,14 @@ The `src` folder contains only the source for the AngularJS client application. 
 - `index.html`
 - `app.scss`
 - `app.module.js`
-- `app.controller.js`
 
 Below this level you will find various folders that arrange the application's functionality into logical modules.
 
 - `framework:` Container for reusable services such as logging, exception handling, routing, security, local storage etc. These services are expected to work out-of-the-box without any changes for most applications. The template provides sample implementations for the first three. (This folder is called `blocks` in the gulp-patterns project.)
 
-- `core:` contains functionality that is shared across the application and will probably need customization for a specific application. This includes directives, filters and services and styles common to the entire application.
+- `core:` Contains functionality that is shared across the application and will probably need customization for a specific application. This includes directives, filters and services and styles common to the entire application.
 
-- `dashboard:` A feature folder that implements a dashboard with rich functionality.
-
-- `profile:`: Another feature folder that implements a simple form.
+- `components:` Contains all the components of the application. We recommend thinking of an Angular application as a tree of components, starting with the `app` component as the root of this tree.
 
 - `images:` Images used in the application.
 

@@ -5,6 +5,8 @@
         .module('app.topnav')
         .directive('atTopnav', topnavDirective);
 
+
+    // ----- topnavDirective -----
     topnavDirective.$inject = [];
 
     /* @ngInject */
@@ -13,9 +15,8 @@
         var directive = {
             restrict: 'E',
             templateUrl: 'components/topnav/topnav.html',
-            controllerAs: 'vm',
-            bindToController: true,
-            controller: TopnavController
+            controller: TopnavController,
+            controllerAs: 'vm'
         };
 
         return directive;
